@@ -12,12 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install Aptos CLI
-        uses: aptos-labs/setup-aptos-cli@v2
-        with:
-          version: 6.0.1
+        run: |
+          curl -fsSL -o aptos-cli.zip https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v6.0.1/aptos-cli-6.0.1-Ubuntu-22.04-x86_64.zip
+          sudo unzip -q aptos-cli.zip -d /usr/local/bin
+          sudo chmod +x /usr/local/bin/aptos
+          aptos --version
       - name: Compile Move Bytecode
-        working-directory: .
         run: aptos move compile
       - name: Run Move Unit & Invariant Tests
-        working-directory: .
         run: aptos move test

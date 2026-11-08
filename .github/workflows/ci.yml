@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Aptos CLI
+        uses: aptos-labs/setup-aptos-cli@v2
+        with:
+          version: 6.0.1
+      - name: Compile Move Bytecode
+        working-directory: .
+        run: aptos move compile
+      - name: Run Move Unit & Invariant Tests
+        working-directory: .
+        run: aptos move test

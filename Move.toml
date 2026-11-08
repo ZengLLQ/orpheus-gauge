@@ -1,0 +1,14 @@
+[package]
+name = "orpheus_gauge"
+version = "0.1.0"
+authors = ["ZengLLQ"]
+
+[addresses]
+orpheus_gauge = "0x08F5"
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "aptos-release-v1.16"
+subdir = "aptos-framework"
+
+[dev-dependencies]

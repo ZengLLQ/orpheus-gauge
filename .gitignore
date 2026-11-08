@@ -1,0 +1,6 @@
+build/
+.aptos/
+.move/
+*.swp
+*~
+.DS_Store
